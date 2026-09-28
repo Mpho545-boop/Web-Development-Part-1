@@ -1,0 +1,1036 @@
+/* =========================================================
+   PAWS & HEARTS ANIMAL RESCUE
+   Main Stylesheet: style.css
+   ========================================================= */
+
+
+/* =========================================================
+   1. CSS RESET
+   Removes default browser margins and padding.
+   This helps keep the design consistent across browsers.
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Enables smooth scrolling when navigation links are clicked */
+html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+}
+
+/* Remove default margins from common elements */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+    margin: 0;
+}
+
+/* Add appropriate indentation back to lists */
+ul,
+ol {
+    padding-left: 1.5rem;
+}
+
+/* Make images responsive */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Make form controls use the website's font */
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* =========================================================
+   2. CSS VARIABLES / COLOUR SCHEME
+   CSS custom properties make it easy to maintain
+   consistent colours, spacing, shadows and sizes.
+   ========================================================= */
+
+:root {
+
+    /* Main website colours */
+    --color-primary: #7b3f61;
+    --color-primary-dark: #582b46;
+    --color-primary-light: #f3e5ec;
+
+    /* Secondary/accent colour */
+    --color-secondary: #e7a23b;
+    --color-secondary-dark: #b87318;
+
+    /* Background and text colours */
+    --color-background: #fffaf7;
+    --color-surface: #ffffff;
+    --color-text: #333333;
+    --color-text-light: #666666;
+    --color-border: #e2d8d2;
+
+    /* Success colour */
+    --color-success: #357a4a;
+
+    /* Shadows */
+    --shadow-small: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12);
+
+    /* Border radius */
+    --radius-small: 0.4rem;
+    --radius-medium: 0.75rem;
+    --radius-large: 1rem;
+
+    /* Maximum website width */
+    --max-width: 75rem;
+
+    /* Consistent spacing scale */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+}
+
+
+/* =========================================================
+   3. BASE WEBSITE STYLES
+   Sets the default font, colours, spacing and line height.
+   ========================================================= */
+
+body {
+
+    /* System fonts improve loading speed and compatibility */
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    /* Base font size */
+    font-size: 1rem;
+
+    /* Makes paragraphs easier to read */
+    line-height: 1.7;
+
+    /* Slight spacing between letters */
+    letter-spacing: 0.01em;
+
+    /* Main text colour */
+    color: var(--color-text);
+
+    /* Main page background */
+    background-color: var(--color-background);
+
+    /* Remove browser default padding */
+    padding: 0;
+}
+
+
+/* =========================================================
+   4. TYPOGRAPHY
+   Creates a consistent typography hierarchy.
+   ========================================================= */
+
+h1,
+h2,
+h3 {
+
+    /* Makes headings bold */
+    font-weight: 700;
+
+    /* Controls vertical spacing between lines */
+    line-height: 1.2;
+
+    /* Slightly tighter heading letters */
+    letter-spacing: -0.02em;
+
+    /* Heading colour */
+    color: var(--color-primary-dark);
+}
+
+/* Main website heading */
+h1 {
+    /*
+       clamp() allows the heading to automatically
+       resize between mobile and desktop.
+    */
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* Section headings */
+h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-lg);
+}
+
+/* Sub-headings */
+h3 {
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
+    margin-bottom: var(--space-md);
+}
+
+/* Paragraph spacing */
+p {
+    margin-bottom: var(--space-md);
+}
+
+/* Makes important text bold */
+strong {
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   5. LINKS
+   Adds colour and interactive states to links.
+   ========================================================= */
+
+a {
+    color: var(--color-primary);
+
+    /* Underline links for accessibility */
+    text-decoration: underline;
+
+    /* Makes the underline easier to see */
+    text-decoration-thickness: 0.1em;
+    text-underline-offset: 0.15em;
+
+    /* Smooth colour transition */
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+/* Link hover effect */
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Keyboard focus state */
+a:focus-visible {
+    outline: 0.2rem solid var(--color-secondary);
+    outline-offset: 0.2rem;
+}
+
+/* Effect while the link is being clicked */
+a:active {
+    color: var(--color-secondary-dark);
+}
+
+
+/* =========================================================
+   6. HEADER
+   Styles the main website header.
+   ========================================================= */
+
+header {
+
+    /* Gradient background */
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-primary-dark),
+            var(--color-primary)
+        );
+
+    /* Header text colour */
+    color: white;
+
+    /* Header spacing */
+    padding: var(--space-2xl) var(--space-md);
+
+    /* Centre the header content */
+    text-align: center;
+}
+
+/* Main header title */
+header h1 {
+    color: white;
+    margin-bottom: var(--space-sm);
+}
+
+/* Header description */
+header > p {
+    max-width: 45rem;
+    margin: 0 auto var(--space-xl);
+    color: #fceff5;
+    font-size: 1.1rem;
+}
+
+
+/* =========================================================
+   7. NAVIGATION
+   Creates a flexible responsive navigation menu.
+   ========================================================= */
+
+nav {
+
+    /* Places navigation links next to each other */
+    display: flex;
+
+    /* Centres the links */
+    justify-content: center;
+    align-items: center;
+
+    /* Allows links to move to another line */
+    flex-wrap: wrap;
+
+    /* Space between links */
+    gap: 0.5rem;
+
+    /* Prevents navigation from becoming too wide */
+    max-width: var(--max-width);
+
+    /* Centres navigation */
+    margin: 0 auto;
+}
+
+/* Navigation links */
+nav a {
+
+    /* White text against the dark header */
+    color: white;
+
+    /* Removes normal link underline */
+    text-decoration: none;
+
+    /* Makes links easier to click */
+    padding: 0.6rem 0.9rem;
+
+    /* Rounded corners */
+    border-radius: var(--radius-small);
+
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    /* Smooth hover animation */
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Navigation hover effect */
+nav a:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.18);
+
+    /* Slight movement when hovering */
+    transform: translateY(-0.1rem);
+}
+
+/* Navigation keyboard focus */
+nav a:focus-visible {
+    outline: 0.2rem solid var(--color-secondary);
+}
+
+/* Navigation click effect */
+nav a:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   8. MAIN CONTENT
+   Controls the width and spacing of the main page.
+   ========================================================= */
+
+main {
+
+    /* 92% width on smaller screens, maximum width on desktop */
+    width: min(92%, var(--max-width));
+
+    /* Centres the main content */
+    margin: 0 auto;
+}
+
+/* General section styling */
+section {
+
+    /* Creates vertical space between sections */
+    padding: var(--space-3xl) 0;
+
+    /* Helps anchor links stop at a useful position */
+    scroll-margin-top: 1rem;
+}
+
+/* Prevents paragraphs from becoming too wide */
+section > p {
+    max-width: 55rem;
+}
+
+/* Controls the width of lists */
+section ul,
+section ol {
+    max-width: 55rem;
+}
+
+/* Adds space between list items */
+section li {
+    margin-bottom: var(--space-xs);
+}
+
+/* Horizontal divider */
+hr {
+    border: 0;
+    border-top: 0.1rem solid var(--color-border);
+}
+
+
+/* =========================================================
+   9. HOME SECTION
+   Styles the introductory section.
+   ========================================================= */
+
+#home {
+
+    /* Centres the introduction */
+    text-align: center;
+
+    /* Extra spacing around the home section */
+    padding: 5rem 1rem;
+}
+
+/* Centres home paragraphs */
+#home > p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Highlights the "Every Paw..." heading */
+#home h3 {
+    color: var(--color-secondary-dark);
+    margin-top: var(--space-xl);
+}
+
+
+/* =========================================================
+   10. ABOUT SECTION
+   Creates a card-style appearance.
+   ========================================================= */
+
+#about {
+
+    /* White background */
+    background-color: var(--color-surface);
+
+    /* Responsive horizontal padding */
+    padding-left: clamp(1rem, 4vw, 3rem);
+    padding-right: clamp(1rem, 4vw, 3rem);
+
+    /* Rounded corners */
+    border-radius: var(--radius-large);
+
+    /* Subtle shadow */
+    box-shadow: var(--shadow-small);
+}
+
+/* Adds space above About Us sub-headings */
+#about h3 {
+    margin-top: var(--space-xl);
+}
+
+
+/* =========================================================
+   11. ADOPTION CARDS
+   Styles Buddy, Luna and Max.
+   ========================================================= */
+
+#adopt > article {
+
+    /* White card background */
+    background-color: var(--color-surface);
+
+    /* Card border */
+    border: 0.1rem solid var(--color-border);
+
+    /* Decorative left border */
+    border-left: 0.35rem solid var(--color-primary);
+
+    /* Rounded corners */
+    border-radius: var(--radius-medium);
+
+    /* Internal spacing */
+    padding: var(--space-lg);
+
+    /* Space between cards */
+    margin-bottom: var(--space-lg);
+
+    /* Card shadow */
+    box-shadow: var(--shadow-small);
+
+    /* Smooth hover animation */
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Card hover effect */
+#adopt > article:hover {
+
+    /* Moves the card slightly upwards */
+    transform: translateY(-0.25rem);
+
+    /* Makes the shadow slightly stronger */
+    box-shadow: var(--shadow-medium);
+}
+
+/* Adoption animal names */
+#adopt article h3 {
+    color: var(--color-primary);
+}
+
+
+/* =========================================================
+   12. EVENTS
+   Styles the fundraising event cards.
+   ========================================================= */
+
+#events article {
+
+    /* White card background */
+    background-color: var(--color-surface);
+
+    /* Border */
+    border: 0.1rem solid var(--color-border);
+
+    /* Rounded corners */
+    border-radius: var(--radius-medium);
+
+    /* Internal spacing */
+    padding: var(--space-lg);
+
+    /* Space between event cards */
+    margin-bottom: var(--space-lg);
+
+    /* Subtle shadow */
+    box-shadow: var(--shadow-small);
+
+    /* Hover animation */
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Event card hover effect */
+#events article:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Event headings */
+#events article h3 {
+    color: var(--color-primary);
+}
+
+
+/* =========================================================
+   13. FORMS
+   Styles volunteer, donation and contact forms.
+   ========================================================= */
+
+form {
+
+    /* Prevents forms from becoming too wide */
+    max-width: 45rem;
+
+    /* White form background */
+    background-color: var(--color-surface);
+
+    /* Responsive padding */
+    padding: clamp(1rem, 4vw, 2rem);
+
+    /* Border */
+    border: 0.1rem solid var(--color-border);
+
+    /* Rounded corners */
+    border-radius: var(--radius-medium);
+
+    /* Shadow */
+    box-shadow: var(--shadow-small);
+}
+
+/* Space between form fields */
+form p {
+    margin-bottom: var(--space-lg);
+}
+
+/* Form labels */
+label {
+    display: inline-block;
+
+    margin-bottom: 0.35rem;
+
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   14. INPUTS, SELECTS AND TEXTAREAS
+   ========================================================= */
+
+input,
+select,
+textarea {
+
+    /* Inputs use the full available width */
+    width: 100%;
+
+    /* Comfortable internal spacing */
+    padding: 0.75rem 0.9rem;
+
+    color: var(--color-text);
+    background-color: white;
+
+    /* Border around form controls */
+    border: 0.1rem solid #cfc5bf;
+
+    /* Rounded corners */
+    border-radius: var(--radius-small);
+
+    /* Smooth focus animation */
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Textareas can be resized vertically */
+textarea {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+/* Input hover state */
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: var(--color-primary);
+}
+
+/* Input focus state */
+input:focus,
+select:focus,
+textarea:focus {
+
+    /* Removes default browser outline */
+    outline: none;
+
+    /* Highlights active input */
+    border-color: var(--color-primary);
+
+    /* Adds accessible focus glow */
+    box-shadow:
+        0 0 0 0.2rem var(--color-primary-light);
+}
+
+
+/* =========================================================
+   15. SUBMIT BUTTONS
+   Styles "Register", "Donate" and "Send Message".
+   ========================================================= */
+
+input[type="submit"] {
+
+    /* Button only needs its content width */
+    width: auto;
+
+    /* Shows pointer cursor */
+    cursor: pointer;
+
+    /* Button colours */
+    color: white;
+    background-color: var(--color-primary);
+
+    border: 0.1rem solid var(--color-primary);
+
+    /* Button size */
+    padding: 0.8rem 1.4rem;
+
+    /* Bold button text */
+    font-weight: 700;
+
+    /* Smooth animation */
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Button hover */
+input[type="submit"]:hover {
+    background-color: var(--color-primary-dark);
+
+    box-shadow: var(--shadow-small);
+
+    transform: translateY(-0.1rem);
+}
+
+/* Button keyboard focus */
+input[type="submit"]:focus-visible {
+    outline: 0.2rem solid var(--color-secondary);
+    outline-offset: 0.2rem;
+}
+
+/* Button active/click state */
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   16. RESPONSIBLE PET OWNERSHIP
+   Styles the educational section.
+   ========================================================= */
+
+#education {
+
+    /* Light purple/pink background */
+    background-color: var(--color-primary-light);
+
+    /* Responsive padding */
+    padding-left: clamp(1rem, 4vw, 3rem);
+    padding-right: clamp(1rem, 4vw, 3rem);
+
+    /* Rounded corners */
+    border-radius: var(--radius-large);
+}
+
+/* Changes list bullet colour */
+#education li::marker {
+    color: var(--color-primary);
+}
+
+
+/* =========================================================
+   17. CONTACT SECTION
+   ========================================================= */
+
+/* Styles the address block */
+address {
+
+    /* White background */
+    background-color: var(--color-surface);
+
+    /* Decorative orange border */
+    border-left: 0.35rem solid var(--color-secondary);
+
+    /* Internal spacing */
+    padding: var(--space-lg);
+
+    /* Space below address */
+    margin-bottom: var(--space-xl);
+
+    /* Rounded corners */
+    border-radius: var(--radius-small);
+
+    /* Reset browser italic address styling */
+    font-style: normal;
+
+    line-height: 1.8;
+}
+
+/* Adds space before contact form */
+#contact form {
+    margin-top: var(--space-lg);
+}
+
+
+/* =========================================================
+   18. FOOTER
+   ========================================================= */
+
+footer {
+
+    /* Dark footer background */
+    color: white;
+    background-color: var(--color-primary-dark);
+
+    /* Centres footer content */
+    text-align: center;
+
+    /* Footer spacing */
+    padding: var(--space-2xl) var(--space-md);
+}
+
+/* Footer heading */
+footer h3 {
+    color: white;
+}
+
+/* Footer paragraph */
+footer p {
+    color: #fceff5;
+}
+
+/* Footer links */
+footer a {
+    color: white;
+}
+
+/* Footer link hover */
+footer a:hover {
+    color: var(--color-secondary);
+}
+
+
+/* =========================================================
+   19. DESKTOP BREAKPOINT
+   Applies when the screen is 64rem (1024px) or wider.
+   Creates a three-column layout.
+   ========================================================= */
+
+@media (min-width: 64rem) {
+
+    /* Adoption and events become three-column grids */
+    #adopt,
+    #events {
+        display: grid;
+
+        /* Three equal columns */
+        grid-template-columns: repeat(3, 1fr);
+
+        /* Space between columns */
+        gap: var(--space-lg);
+
+        align-items: start;
+    }
+
+    /*
+       These elements span across all three columns
+       instead of being placed inside individual cards.
+    */
+    #adopt > h2,
+    #adopt > p,
+    #adopt > h3,
+    #adopt > ol,
+    #adopt > p:last-child,
+    #events > h2,
+    #events > p {
+        grid-column: 1 / -1;
+    }
+
+    /* Remove unnecessary bottom margin in grid */
+    #adopt > article {
+        margin-bottom: 0;
+    }
+
+    #events article {
+        margin-bottom: 0;
+    }
+}
+
+
+/* =========================================================
+   20. TABLET BREAKPOINT
+   Applies between 40rem (640px) and 63.99rem.
+   Creates a two-column layout.
+   ========================================================= */
+
+@media (min-width: 40rem) and (max-width: 63.99rem) {
+
+    /* Standard tablet font size */
+    body {
+        font-size: 1rem;
+    }
+
+    /* Tablet header spacing */
+    header {
+        padding: var(--space-xl) var(--space-lg);
+    }
+
+    /* Slightly smaller navigation spacing */
+    nav {
+        gap: 0.25rem;
+    }
+
+    nav a {
+        padding: 0.55rem 0.7rem;
+    }
+
+    /* Adoption and event sections use two columns */
+    #adopt,
+    #events {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: var(--space-lg);
+    }
+
+    /* Full-width elements */
+    #adopt > h2,
+    #adopt > p,
+    #adopt > h3,
+    #adopt > ol,
+    #adopt > p:last-child,
+    #events > h2,
+    #events > p {
+        grid-column: 1 / -1;
+    }
+
+    /* Remove unnecessary bottom spacing */
+    #adopt > article,
+    #events article {
+        margin-bottom: 0;
+    }
+}
+
+
+/* =========================================================
+   21. MOBILE BREAKPOINT
+   Applies below 40rem (640px).
+   The website switches to a single-column layout.
+   ========================================================= */
+
+@media (max-width: 39.99rem) {
+
+    /* Slightly smaller text for mobile screens */
+    body {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Smaller mobile header */
+    header {
+        padding: var(--space-xl) var(--space-md);
+    }
+
+    /* Header description */
+    header > p {
+        font-size: 1rem;
+    }
+
+    /*
+       Navigation changes from horizontal to vertical
+       so links are easier to use on phones.
+    */
+    nav {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.25rem;
+    }
+
+    /* Make each navigation link full width */
+    nav a {
+        width: 100%;
+        padding: 0.7rem;
+
+        /* Slight background makes links easier to identify */
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Main content takes up most of the mobile screen */
+    main {
+        width: 92%;
+    }
+
+    /* Reduce section spacing on small screens */
+    section {
+        padding: var(--space-2xl) 0;
+    }
+
+    /* Reduce home section spacing */
+    #home {
+        padding: var(--space-2xl) 0;
+    }
+
+    /* Slightly smaller rounded corners on mobile */
+    #about,
+    #education {
+        border-radius: var(--radius-medium);
+    }
+
+    /* Reduce form padding */
+    form {
+        padding: var(--space-md);
+    }
+
+    /*
+       Make submit buttons full width on mobile.
+       This makes them easier to tap.
+    */
+    input[type="submit"] {
+        width: 100%;
+    }
+
+    /* Reduce address padding */
+    address {
+        padding: var(--space-md);
+    }
+}
+
+
+/* =========================================================
+   22. ACCESSIBILITY
+   Respects users who prefer reduced motion.
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    /* Disable smooth scrolling */
+    html {
+        scroll-behavior: auto;
+    }
+
+    /*
+       Reduce animations and transitions for users
+       who have enabled reduced motion in their OS.
+    */
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+
+/* =========================================================
+   23. PRINT STYLES
+   Makes the website printer-friendly.
+   ========================================================= */
+
+@media print {
+
+    /* Navigation and forms are unnecessary when printing */
+    nav,
+    form {
+        display: none;
+    }
+
+    /* Use black text and white background */
+    body {
+        color: black;
+        background: white;
+    }
+
+    /* Remove coloured backgrounds from header/footer */
+    header,
+    footer {
+        color: black;
+        background: white;
+    }
+
+    /* Make links print clearly */
+    a {
+        color: black;
+    }
+}
